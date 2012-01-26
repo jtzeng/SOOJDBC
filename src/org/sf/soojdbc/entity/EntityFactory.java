@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import org.sf.soojdbc.db.DbConnection;
 
 /**
- * SOOJDBC is a simple object oriented JDBC wrapper.
- * Copyright (C) 2012 Rick van Biljouw
+ * SOOJDBC is a simple object oriented JDBC wrapper. Copyright (C) 2012 Rick van
+ * Biljouw
  * 
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -232,7 +232,6 @@ public class EntityFactory<T> {
 				ArrayList<T> resultsArrayList = new ArrayList<T>();
 				ResultSet resultSet = query.getResultSet();
 				while (resultSet.next()) {
-
 					T aNewEntity = this.entityClass.newInstance();
 					for (Field field : this.entityClass.getDeclaredFields()) {
 						if (field.isAnnotationPresent(Column.class)) {
@@ -257,6 +256,7 @@ public class EntityFactory<T> {
 
 					resultsArrayList.add(aNewEntity);
 				}
+				return resultsArrayList;
 			}
 
 		} catch (Exception e) {
