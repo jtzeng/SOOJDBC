@@ -173,7 +173,7 @@ public class EntityFactory<T> {
 	 */
 	public T get(String... conditions) {
 		try {
-			Statement query = this.connection.getConnection().createStatement();
+			Statement query = this.connection.getConnection().createStatement();			
 			if (!query.execute("SELECT * FROM " + this.getTableName() + " "
 					+ concatenateQueryConditions(conditions))) {
 				return null;
@@ -286,7 +286,7 @@ public class EntityFactory<T> {
 		String whereClause = "WHERE ";
 		for (int i = 0; i < conditions.length; i++) {
 			whereClause += conditions[i] + "='" + conditions[i + 1] + "'"
-					+ (i + 1 == conditions.length - 1 ? "" : " ");
+					+ (i + 1 == conditions.length - 1 ? "" : " AND ");
 			i++;
 		}
 		return conditions.length > 0 ? whereClause : "";
